@@ -1,4 +1,4 @@
-# LarvsRAID Dashboard
+# Selfhosted Dashboard
 
 A self-hosted media & download monitoring dashboard with a cyberpunk aesthetic. Displays live status for your Sonarr, Radarr, SABnzbd, Deluge, Overseerr, and UnRAID services in a single-page view — no frameworks, no build step.
 
