@@ -125,7 +125,7 @@ export async function refresh() {
     const [series, queue, calendar, status] = await Promise.all([
       fetchSonarr('/api/v3/series'),
       fetchSonarr('/api/v3/queue?pageSize=100'),
-      fetchSonarr(`/api/v3/calendar?start=${startStr}&end=${endStr}`),
+      fetchSonarr(`/api/v3/calendar?start=${startStr}&end=${endStr}&includeSeries=true`),
       fetchSonarr('/api/v3/system/status').catch(() => null),
     ]);
 

@@ -1,5 +1,5 @@
 /**
- * LarvsRAID Dashboard - Local Proxy Server
+ * Selfhosted Dashboard - Local Proxy Server
  *
  * Serves the dashboard and proxies API calls to bypass browser CORS restrictions.
  * Requires Node.js 18+ (uses built-in fetch).
@@ -150,7 +150,7 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, '0.0.0.0', () => {
-  console.log(`\n  LarvsRAID Dashboard`);
+  console.log(`\n  Selfhosted Dashboard`);
   console.log(`  ─────────────────────────────────`);
   console.log(`  Local:   http://localhost:${PORT}`);
   console.log(`  Network: http://<your-ip>:${PORT}`);

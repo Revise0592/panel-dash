@@ -1,7 +1,7 @@
 services:
-  larvsraid-dashboard:
+  Selfhosted-dashboard:
     build: .
-    container_name: larvsraid-dashboard
+    container_name: Selfhosted-dashboard
     ports:
       - "3000:3000"
     volumes:
