@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LarvsRAID Dashboard</title>
+
+  <!-- Preconnect to Google Fonts for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <h1 class="app-title">LarvsRAID Dashboard</h1>
+        <div class="app-subtitle">SELF-HOSTED MEDIA &amp; DOWNLOAD MONITOR</div>
+      </div>
+      <div class="header-right">
+        <div class="clock-time" id="current-time">--:--:--</div>
+        <div class="clock-date" id="current-date">--- --- -- ----</div>
+      </div>
+    </header>
+
+    <!-- Neon separator -->
+    <div class="header-separator"></div>
+
+    <!-- Dashboard Grid -->
+    <main class="dashboard-grid">
+
+      <!-- Sonarr -->
+      <div class="service-card" id="sonarr-card">
+        <div class="card-header">
+          <span class="status-dot loading"></span>
+          <h2 class="card-title">SONARR</h2>
+        </div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+      </div>
+
+      <!-- Radarr -->
+      <div class="service-card" id="radarr-card">
+        <div class="card-header">
+          <span class="status-dot loading"></span>
+          <h2 class="card-title">RADARR</h2>
+        </div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+      </div>
+
+      <!-- SABnzbd -->
+      <div class="service-card" id="sabnzbd-card">
+        <div class="card-header">
+          <span class="status-dot loading"></span>
+          <h2 class="card-title">SABNZBD</h2>
+        </div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+      </div>
+
+      <!-- Deluge -->
+      <div class="service-card" id="deluge-card">
+        <div class="card-header">
+          <span class="status-dot loading"></span>
+          <h2 class="card-title">DELUGE</h2>
+        </div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+      </div>
+
+      <!-- Overseerr -->
+      <div class="service-card" id="overseerr-card">
+        <div class="card-header">
+          <span class="status-dot loading"></span>
+          <h2 class="card-title">OVERSEERR</h2>
+        </div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+      </div>
+
+      <!-- UnRAID -->
+      <div class="service-card" id="unraid-card">
+        <div class="card-header">
+          <span class="status-dot loading"></span>
+          <h2 class="card-title">UNRAID</h2>
+        </div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+        <div class="skeleton-line"></div>
+        <div class="skeleton-line short"></div>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <div class="footer-separator" style="margin-top: 28px;"></div>
+    <footer class="footer">
+      <div class="footer-left">
+        <span class="footer-label">LAST UPDATED</span>
+        <span id="last-updated">--:--:--</span>
+      </div>
+      <button class="refresh-btn" id="refresh-btn" aria-label="Refresh all services">
+        <span class="refresh-icon">&#x27F3;</span>
+        REFRESH ALL
+      </button>
+    </footer>
+
+  </div>
+
+  <!-- ES6 module entry point -->
+  <script type="module" src="js/app.js"></script>
+
+</body>
+</html>

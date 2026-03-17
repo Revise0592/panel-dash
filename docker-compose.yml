@@ -1,0 +1,9 @@
+services:
+  larvsraid-dashboard:
+    build: .
+    container_name: larvsraid-dashboard
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    restart: unless-stopped
