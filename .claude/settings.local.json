@@ -9,7 +9,8 @@
       "WebFetch(domain:docs.unraid.net)",
       "WebFetch(domain:forums.unraid.net)",
       "WebFetch(domain:deepwiki.com)",
-      "WebFetch(domain:raw.githubusercontent.com)"
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(grep -n \"import \\\\* as Modal\" js/services/*.js)"
     ]
   }
 }

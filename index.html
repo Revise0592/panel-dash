@@ -5,11 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Selfhosted Dashboard</title>
 
-  <!-- Preconnect to Google Fonts for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&display=swap"
     rel="stylesheet"
   />
 
@@ -17,13 +16,66 @@
 </head>
 <body>
 
+  <!-- ══════════════════════════════════════════════
+       Background scrolling text tracks
+       Inspired by the CMR2 PS1 menu effect
+       ══════════════════════════════════════════════ -->
+  <div class="bg-text-canvas" aria-hidden="true">
+
+    <div class="bg-text-track t1">
+      <span>sonarr &nbsp; radarr &nbsp; sabnzbd &nbsp; deluge &nbsp; overseerr &nbsp; unraid &nbsp; sonarr &nbsp; radarr &nbsp; sabnzbd &nbsp; deluge &nbsp; overseerr &nbsp; unraid &nbsp; sonarr &nbsp; radarr &nbsp; sabnzbd &nbsp; deluge &nbsp; overseerr &nbsp; unraid &nbsp;</span>
+      <span>sonarr &nbsp; radarr &nbsp; sabnzbd &nbsp; deluge &nbsp; overseerr &nbsp; unraid &nbsp; sonarr &nbsp; radarr &nbsp; sabnzbd &nbsp; deluge &nbsp; overseerr &nbsp; unraid &nbsp; sonarr &nbsp; radarr &nbsp; sabnzbd &nbsp; deluge &nbsp; overseerr &nbsp; unraid &nbsp;</span>
+    </div>
+
+    <div class="bg-text-track t2">
+      <span>unraid &nbsp; overseerr &nbsp; deluge &nbsp; sabnzbd &nbsp; radarr &nbsp; sonarr &nbsp; unraid &nbsp; overseerr &nbsp; deluge &nbsp; sabnzbd &nbsp; radarr &nbsp; sonarr &nbsp; unraid &nbsp; overseerr &nbsp; deluge &nbsp; sabnzbd &nbsp; radarr &nbsp; sonarr &nbsp;</span>
+      <span>unraid &nbsp; overseerr &nbsp; deluge &nbsp; sabnzbd &nbsp; radarr &nbsp; sonarr &nbsp; unraid &nbsp; overseerr &nbsp; deluge &nbsp; sabnzbd &nbsp; radarr &nbsp; sonarr &nbsp; unraid &nbsp; overseerr &nbsp; deluge &nbsp; sabnzbd &nbsp; radarr &nbsp; sonarr &nbsp;</span>
+    </div>
+
+    <div class="bg-text-track t3">
+      <span>s &nbsp; o &nbsp; n &nbsp; a &nbsp; r &nbsp; r &nbsp;&nbsp;&nbsp; r &nbsp; a &nbsp; d &nbsp; a &nbsp; r &nbsp; r &nbsp;&nbsp;&nbsp; s &nbsp; a &nbsp; b &nbsp; n &nbsp; z &nbsp; b &nbsp; d &nbsp;&nbsp;&nbsp; d &nbsp; e &nbsp; l &nbsp; u &nbsp; g &nbsp; e &nbsp;&nbsp;&nbsp; o &nbsp; v &nbsp; e &nbsp; r &nbsp; s &nbsp; e &nbsp; e &nbsp; r &nbsp; r &nbsp;&nbsp;&nbsp; u &nbsp; n &nbsp; r &nbsp; a &nbsp; i &nbsp; d &nbsp;&nbsp;&nbsp;</span>
+      <span>s &nbsp; o &nbsp; n &nbsp; a &nbsp; r &nbsp; r &nbsp;&nbsp;&nbsp; r &nbsp; a &nbsp; d &nbsp; a &nbsp; r &nbsp; r &nbsp;&nbsp;&nbsp; s &nbsp; a &nbsp; b &nbsp; n &nbsp; z &nbsp; b &nbsp; d &nbsp;&nbsp;&nbsp; d &nbsp; e &nbsp; l &nbsp; u &nbsp; g &nbsp; e &nbsp;&nbsp;&nbsp; o &nbsp; v &nbsp; e &nbsp; r &nbsp; s &nbsp; e &nbsp; e &nbsp; r &nbsp; r &nbsp;&nbsp;&nbsp; u &nbsp; n &nbsp; r &nbsp; a &nbsp; i &nbsp; d &nbsp;&nbsp;&nbsp;</span>
+    </div>
+
+    <div class="bg-text-track t4">
+      <span>selfhosted &nbsp; dashboard &nbsp; media &nbsp; monitor &nbsp; downloads &nbsp; server &nbsp; selfhosted &nbsp; dashboard &nbsp; media &nbsp; monitor &nbsp; downloads &nbsp; server &nbsp; selfhosted &nbsp; dashboard &nbsp; media &nbsp; monitor &nbsp; downloads &nbsp; server &nbsp;</span>
+      <span>selfhosted &nbsp; dashboard &nbsp; media &nbsp; monitor &nbsp; downloads &nbsp; server &nbsp; selfhosted &nbsp; dashboard &nbsp; media &nbsp; monitor &nbsp; downloads &nbsp; server &nbsp; selfhosted &nbsp; dashboard &nbsp; media &nbsp; monitor &nbsp; downloads &nbsp; server &nbsp;</span>
+    </div>
+
+    <div class="bg-text-track t5">
+      <span>sonarr &nbsp; radarr &nbsp; sabnzbd &nbsp; deluge &nbsp; overseerr &nbsp; unraid &nbsp; sonarr &nbsp; radarr &nbsp; sabnzbd &nbsp; deluge &nbsp; overseerr &nbsp; unraid &nbsp; sonarr &nbsp; radarr &nbsp; sabnzbd &nbsp; deluge &nbsp; overseerr &nbsp; unraid &nbsp;</span>
+      <span>sonarr &nbsp; radarr &nbsp; sabnzbd &nbsp; deluge &nbsp; overseerr &nbsp; unraid &nbsp; sonarr &nbsp; radarr &nbsp; sabnzbd &nbsp; deluge &nbsp; overseerr &nbsp; unraid &nbsp; sonarr &nbsp; radarr &nbsp; sabnzbd &nbsp; deluge &nbsp; overseerr &nbsp; unraid &nbsp;</span>
+    </div>
+
+    <div class="bg-text-track t6">
+      <span>d &nbsp; e &nbsp; l &nbsp; u &nbsp; g &nbsp; e &nbsp;&nbsp;&nbsp; u &nbsp; n &nbsp; r &nbsp; a &nbsp; i &nbsp; d &nbsp;&nbsp;&nbsp; r &nbsp; a &nbsp; d &nbsp; a &nbsp; r &nbsp; r &nbsp;&nbsp;&nbsp; s &nbsp; o &nbsp; n &nbsp; a &nbsp; r &nbsp; r &nbsp;&nbsp;&nbsp; o &nbsp; v &nbsp; e &nbsp; r &nbsp; s &nbsp; e &nbsp; e &nbsp; r &nbsp; r &nbsp;&nbsp;&nbsp; s &nbsp; a &nbsp; b &nbsp; n &nbsp; z &nbsp; b &nbsp; d &nbsp;&nbsp;&nbsp;</span>
+      <span>d &nbsp; e &nbsp; l &nbsp; u &nbsp; g &nbsp; e &nbsp;&nbsp;&nbsp; u &nbsp; n &nbsp; r &nbsp; a &nbsp; i &nbsp; d &nbsp;&nbsp;&nbsp; r &nbsp; a &nbsp; d &nbsp; a &nbsp; r &nbsp; r &nbsp;&nbsp;&nbsp; s &nbsp; o &nbsp; n &nbsp; a &nbsp; r &nbsp; r &nbsp;&nbsp;&nbsp; o &nbsp; v &nbsp; e &nbsp; r &nbsp; s &nbsp; e &nbsp; e &nbsp; r &nbsp; r &nbsp;&nbsp;&nbsp; s &nbsp; a &nbsp; b &nbsp; n &nbsp; z &nbsp; b &nbsp; d &nbsp;&nbsp;&nbsp;</span>
+    </div>
+
+    <div class="bg-text-track t7">
+      <span>unraid &nbsp; overseerr &nbsp; deluge &nbsp; sabnzbd &nbsp; radarr &nbsp; sonarr &nbsp; unraid &nbsp; overseerr &nbsp; deluge &nbsp; sabnzbd &nbsp; radarr &nbsp; sonarr &nbsp; unraid &nbsp; overseerr &nbsp; deluge &nbsp; sabnzbd &nbsp; radarr &nbsp; sonarr &nbsp;</span>
+      <span>unraid &nbsp; overseerr &nbsp; deluge &nbsp; sabnzbd &nbsp; radarr &nbsp; sonarr &nbsp; unraid &nbsp; overseerr &nbsp; deluge &nbsp; sabnzbd &nbsp; radarr &nbsp; sonarr &nbsp; unraid &nbsp; overseerr &nbsp; deluge &nbsp; sabnzbd &nbsp; radarr &nbsp; sonarr &nbsp;</span>
+    </div>
+
+    <div class="bg-text-track t8">
+      <span>selfhosted &nbsp; dashboard &nbsp; media &nbsp; monitor &nbsp; downloads &nbsp; server &nbsp; selfhosted &nbsp; dashboard &nbsp; media &nbsp; monitor &nbsp; downloads &nbsp; server &nbsp; selfhosted &nbsp; dashboard &nbsp; media &nbsp; monitor &nbsp; downloads &nbsp; server &nbsp;</span>
+      <span>selfhosted &nbsp; dashboard &nbsp; media &nbsp; monitor &nbsp; downloads &nbsp; server &nbsp; selfhosted &nbsp; dashboard &nbsp; media &nbsp; monitor &nbsp; downloads &nbsp; server &nbsp; selfhosted &nbsp; dashboard &nbsp; media &nbsp; monitor &nbsp; downloads &nbsp; server &nbsp;</span>
+    </div>
+
+    <div class="bg-text-track t9">
+      <span>sonarr &nbsp; radarr &nbsp; sabnzbd &nbsp; deluge &nbsp; overseerr &nbsp; unraid &nbsp; sonarr &nbsp; radarr &nbsp; sabnzbd &nbsp; deluge &nbsp; overseerr &nbsp; unraid &nbsp; sonarr &nbsp; radarr &nbsp; sabnzbd &nbsp; deluge &nbsp; overseerr &nbsp; unraid &nbsp;</span>
+      <span>sonarr &nbsp; radarr &nbsp; sabnzbd &nbsp; deluge &nbsp; overseerr &nbsp; unraid &nbsp; sonarr &nbsp; radarr &nbsp; sabnzbd &nbsp; deluge &nbsp; overseerr &nbsp; unraid &nbsp; sonarr &nbsp; radarr &nbsp; sabnzbd &nbsp; deluge &nbsp; overseerr &nbsp; unraid &nbsp;</span>
+    </div>
+
+  </div>
+
   <div class="page-wrapper">
 
     <!-- Header -->
     <header class="header">
       <div class="header-left">
-        <h1 class="app-title">Selfhosted Dashboard</h1>
-        <div class="app-subtitle">SELF-HOSTED MEDIA &amp; DOWNLOAD MONITOR</div>
+        <h1 class="app-title">selfhosted<span class="sep">|</span>dashboard</h1>
+        <div class="app-subtitle">self-hosted media &amp; download monitor</div>
       </div>
       <div class="header-right">
         <div class="clock-time" id="current-time">--:--:--</div>
@@ -31,7 +83,6 @@
       </div>
     </header>
 
-    <!-- Neon separator -->
     <div class="header-separator"></div>
 
     <!-- Dashboard Grid -->
@@ -41,7 +92,7 @@
       <div class="service-card" id="sonarr-card">
         <div class="card-header">
           <span class="status-dot loading"></span>
-          <h2 class="card-title">SONARR</h2>
+          <h2 class="card-title">sonarr</h2>
         </div>
         <div class="skeleton-line"></div>
         <div class="skeleton-line short"></div>
@@ -53,7 +104,7 @@
       <div class="service-card" id="radarr-card">
         <div class="card-header">
           <span class="status-dot loading"></span>
-          <h2 class="card-title">RADARR</h2>
+          <h2 class="card-title">radarr</h2>
         </div>
         <div class="skeleton-line"></div>
         <div class="skeleton-line short"></div>
@@ -65,7 +116,7 @@
       <div class="service-card" id="sabnzbd-card">
         <div class="card-header">
           <span class="status-dot loading"></span>
-          <h2 class="card-title">SABNZBD</h2>
+          <h2 class="card-title">sabnzbd</h2>
         </div>
         <div class="skeleton-line"></div>
         <div class="skeleton-line short"></div>
@@ -77,7 +128,7 @@
       <div class="service-card" id="deluge-card">
         <div class="card-header">
           <span class="status-dot loading"></span>
-          <h2 class="card-title">DELUGE</h2>
+          <h2 class="card-title">deluge</h2>
         </div>
         <div class="skeleton-line"></div>
         <div class="skeleton-line short"></div>
@@ -89,7 +140,7 @@
       <div class="service-card" id="overseerr-card">
         <div class="card-header">
           <span class="status-dot loading"></span>
-          <h2 class="card-title">OVERSEERR</h2>
+          <h2 class="card-title">overseerr</h2>
         </div>
         <div class="skeleton-line"></div>
         <div class="skeleton-line short"></div>
@@ -101,7 +152,7 @@
       <div class="service-card" id="unraid-card">
         <div class="card-header">
           <span class="status-dot loading"></span>
-          <h2 class="card-title">UNRAID</h2>
+          <h2 class="card-title">unraid</h2>
         </div>
         <div class="skeleton-line"></div>
         <div class="skeleton-line short"></div>
@@ -115,19 +166,17 @@
     <div class="footer-separator" style="margin-top: 28px;"></div>
     <footer class="footer">
       <div class="footer-left">
-        <span class="footer-label">LAST UPDATED</span>
+        <span class="footer-label">last updated</span>
         <span id="last-updated">--:--:--</span>
       </div>
       <button class="refresh-btn" id="refresh-btn" aria-label="Refresh all services">
         <span class="refresh-icon">&#x27F3;</span>
-        REFRESH ALL
+        refresh all
       </button>
     </footer>
 
   </div>
 
-  <!-- ES6 module entry point -->
   <script type="module" src="js/app.js"></script>
-
 </body>
 </html>
