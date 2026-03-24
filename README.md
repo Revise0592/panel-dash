@@ -1,6 +1,6 @@
 # Selfhosted Dashboard
 
-A self-hosted media & download monitoring dashboard with a cyberpunk aesthetic. Displays live status for your Sonarr, Radarr, SABnzbd, Deluge, Overseerr, and UnRAID services in a single-page view — no frameworks, no build step.
+A lightweight, self-hosted monitoring dashboard for your media and download stack. Displays live status for Sonarr, Radarr, SABnzbd, Deluge, Overseerr, and UnRAID in a single-page view — no frameworks, no build step.
 
 ![Dashboard preview](/screenshot/Screenshot_20260324_083253.png)
 
@@ -9,11 +9,12 @@ A self-hosted media & download monitoring dashboard with a cyberpunk aesthetic. 
 ## Features
 
 - **Live service monitoring** — status indicators, version badges, and key metrics for each service
+- **Clickable cards** — click any service card to expand a detailed modal with richer data (posters, full queues, Docker containers, disk array, and more)
 - **Auto-refresh** — configurable polling interval (default 30s) with a manual refresh button
-- **UnRAID system info** — CPU/RAM usage, array state, disk temperatures via the UnRAID GraphQL API
+- **UnRAID system info** — CPU/RAM usage, array state, disk temperatures, Docker container status via the UnRAID GraphQL API
 - **Download tracking** — active torrents (Deluge) and Usenet jobs (SABnzbd) with progress bars
 - **Media library stats** — series/episode counts (Sonarr), movie counts (Radarr), and upcoming releases
-- **Request management** — recent Overseerr requests with status badges
+- **Request management** — recent Overseerr requests with TMDB poster art, IMDB/TVDB links, and status badges
 - **CORS proxy** — built-in Node.js proxy so the browser never talks directly to your services
 - **Docker ready** — single `docker compose up` to deploy
 
@@ -21,14 +22,14 @@ A self-hosted media & download monitoring dashboard with a cyberpunk aesthetic. 
 
 ## Services
 
-| Service | What's shown |
-|---|---|
-| **Sonarr** | Total series, monitored count, episodes on disk, queue depth, upcoming episodes |
-| **Radarr** | Total movies, on disk, missing, queue depth, upcoming releases |
-| **SABnzbd** | Download speed, queue size, remaining data, free disk, active downloads |
-| **Deluge** | Downloading/seeding counts, speeds, active torrent progress |
-| **Overseerr** | Pending/total requests, recent request list with status |
-| **UnRAID** | CPU & RAM usage, array state & capacity, uptime, disk temperatures |
+| Service | Card | Detail modal |
+|---|---|---|
+| **Sonarr** | Total series, monitored count, episodes on disk, queue depth | Full series poster grid, download queue, 14-day upcoming calendar |
+| **Radarr** | Total movies, on disk, missing, queue depth | Recently added movies with IMDB links, full queue, upcoming releases |
+| **SABnzbd** | Download speed, queue size, remaining data, free disk | Full queue with categories, last 15 completed downloads |
+| **Deluge** | Downloading/seeding counts, speeds, active torrent progress | All torrents grouped by state with ratio, size, ETA |
+| **Overseerr** | Pending/total requests, recent request list | Last 20 requests with TMDB posters, IMDB/TVDB links |
+| **UnRAID** | CPU & RAM usage, array state, uptime, disk temperatures | System info, all Docker containers, full disk array health |
 
 ---
 
@@ -45,8 +46,8 @@ A self-hosted media & download monitoring dashboard with a cyberpunk aesthetic. 
 ### Using Docker (recommended)
 
 ```bash
-git clone git@github.com:Revise0592/selfhosted-dash.git
-cd SelfhostDashboard
+git clone https://github.com/your-username/selfhosted-dashboard.git
+cd selfhosted-dashboard
 
 # Copy and fill in your config
 cp js/config.example.js js/config.js
@@ -61,8 +62,8 @@ Open **http://localhost:3000** in your browser.
 ### Running locally
 
 ```bash
-git clone git@github.com:Revise0592/selfhosted-dash.git
-cd SelfhostDashboard
+git clone https://github.com/your-username/selfhosted-dashboard.git
+cd selfhosted-dashboard
 
 cp js/config.example.js js/config.js
 nano js/config.js
@@ -117,20 +118,23 @@ const CONFIG = {
 
 > `js/config.js` is listed in `.gitignore` and will never be committed. `js/config.example.js` is the safe template that gets committed instead.
 
+You don't need to configure every service — simply omit any block for services you don't run and remove the corresponding card from `index.html`.
+
 ---
 
 ## Project Structure
 
 ```
-SelfhostDashboard/
+selfhosted-dashboard/
 ├── index.html               # Dashboard layout
 ├── server.js                # Node.js static server + CORS proxy
 ├── docker-compose.yml
 ├── Dockerfile
 ├── css/
-│   └── style.css            # Cyberpunk styling
+│   └── style.css            # Styling
 └── js/
     ├── app.js               # Service orchestration & auto-refresh
+    ├── modal.js             # Shared detail modal manager
     ├── config.js            # Your credentials (gitignored)
     ├── config.example.js    # Placeholder config (committed)
     ├── proxy-fetch.js       # Proxy helper for CORS-restricted services
@@ -148,8 +152,7 @@ SelfhostDashboard/
 ## Tech Stack
 
 - **Frontend** — Vanilla JS (ES6 modules), no framework, no build step
-- **Backend** — Node.js (`http` module only, no dependencies)
-- **Styling** — Pure CSS with variables, grid layout, glassmorphism effects
+- **Backend** — Node.js (`http` module only, no npm dependencies)
 - **APIs** — REST (Sonarr/Radarr/SABnzbd/Overseerr), JSON-RPC (Deluge), GraphQL (UnRAID)
 
 ---
