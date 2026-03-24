@@ -14,6 +14,11 @@
   "build": {
     "appId": "com.panel.dash",
     "productName": "Panel",
+    "publish": {
+      "provider": "github",
+      "owner": "Revise0592",
+      "repo": "panel-dash"
+    },
     "files": [
       "**/*",
       "!node_modules/.cache",
