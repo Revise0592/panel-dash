@@ -1,9 +1,0 @@
-services:
-  Selfhosted-dashboard:
-    build: .
-    container_name: Selfhosted-dashboard
-    ports:
-      - "3000:3000"
-    volumes:
-      - .:/app
-    restart: unless-stopped

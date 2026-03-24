@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Selfhosted Dashboard</title>
+  <title>Panel</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,6 +13,15 @@
   />
 
   <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Apply saved theme before any paint to eliminate flash -->
+  <script>
+    (function () {
+      var t = new URLSearchParams(location.search).get('theme');
+      var valid = ['forest','midnight','ember','slate','crimson'];
+      document.documentElement.dataset.theme = valid.includes(t) ? t : 'forest';
+    })();
+  </script>
 </head>
 <body>
 
@@ -74,7 +83,7 @@
     <!-- Header -->
     <header class="header">
       <div class="header-left">
-        <h1 class="app-title">selfhosted<span class="sep">|</span>dashboard</h1>
+        <h1 class="app-title" id="app-display-title">panel</h1>
         <div class="app-subtitle">self-hosted media &amp; download monitor</div>
       </div>
       <div class="header-right">
@@ -169,14 +178,139 @@
         <span class="footer-label">last updated</span>
         <span id="last-updated">--:--:--</span>
       </div>
-      <button class="refresh-btn" id="refresh-btn" aria-label="Refresh all services">
-        <span class="refresh-icon">&#x27F3;</span>
-        refresh all
-      </button>
+      <div class="footer-right">
+        <button class="settings-btn" id="settings-btn" aria-label="Open settings">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+          settings
+        </button>
+        <button class="refresh-btn" id="refresh-btn" aria-label="Refresh all services">
+          <span class="refresh-icon">&#x27F3;</span>
+          refresh all
+        </button>
+      </div>
     </footer>
 
   </div>
 
+  <!-- Settings overlay -->
+  <div class="settings-overlay" id="settings-overlay" aria-hidden="true">
+    <div class="settings-panel">
+      <div class="settings-header">
+        <span class="settings-title">settings</span>
+        <button class="settings-close" id="settings-cancel">close</button>
+      </div>
+
+      <form class="settings-form" id="settings-form" autocomplete="off">
+
+        <div class="settings-section-label">sonarr</div>
+        <div class="settings-row">
+          <label class="settings-label" for="cfg-sonarr-url">url</label>
+          <input class="settings-input" id="cfg-sonarr-url" type="text" placeholder="http://192.168.1.x:8989" spellcheck="false" />
+        </div>
+        <div class="settings-row">
+          <label class="settings-label" for="cfg-sonarr-key">api key</label>
+          <input class="settings-input" id="cfg-sonarr-key" type="text" placeholder="your api key" spellcheck="false" />
+        </div>
+
+        <div class="settings-section-label">radarr</div>
+        <div class="settings-row">
+          <label class="settings-label" for="cfg-radarr-url">url</label>
+          <input class="settings-input" id="cfg-radarr-url" type="text" placeholder="http://192.168.1.x:7878" spellcheck="false" />
+        </div>
+        <div class="settings-row">
+          <label class="settings-label" for="cfg-radarr-key">api key</label>
+          <input class="settings-input" id="cfg-radarr-key" type="text" placeholder="your api key" spellcheck="false" />
+        </div>
+
+        <div class="settings-section-label">sabnzbd</div>
+        <div class="settings-row">
+          <label class="settings-label" for="cfg-sabnzbd-url">url</label>
+          <input class="settings-input" id="cfg-sabnzbd-url" type="text" placeholder="http://192.168.1.x:8080" spellcheck="false" />
+        </div>
+        <div class="settings-row">
+          <label class="settings-label" for="cfg-sabnzbd-key">api key</label>
+          <input class="settings-input" id="cfg-sabnzbd-key" type="text" placeholder="your api key" spellcheck="false" />
+        </div>
+
+        <div class="settings-section-label">deluge</div>
+        <div class="settings-row">
+          <label class="settings-label" for="cfg-deluge-url">url</label>
+          <input class="settings-input" id="cfg-deluge-url" type="text" placeholder="http://192.168.1.x:8112" spellcheck="false" />
+        </div>
+        <div class="settings-row">
+          <label class="settings-label" for="cfg-deluge-pass">password</label>
+          <input class="settings-input" id="cfg-deluge-pass" type="password" placeholder="your password" />
+        </div>
+
+        <div class="settings-section-label">overseerr</div>
+        <div class="settings-row">
+          <label class="settings-label" for="cfg-overseerr-url">url</label>
+          <input class="settings-input" id="cfg-overseerr-url" type="text" placeholder="http://192.168.1.x:5055" spellcheck="false" />
+        </div>
+        <div class="settings-row">
+          <label class="settings-label" for="cfg-overseerr-key">api key</label>
+          <input class="settings-input" id="cfg-overseerr-key" type="text" placeholder="your api key" spellcheck="false" />
+        </div>
+
+        <div class="settings-section-label">unraid</div>
+        <div class="settings-row">
+          <label class="settings-label" for="cfg-unraid-url">url</label>
+          <input class="settings-input" id="cfg-unraid-url" type="text" placeholder="https://192.168.1.x" spellcheck="false" />
+        </div>
+        <div class="settings-row">
+          <label class="settings-label" for="cfg-unraid-key">api key</label>
+          <input class="settings-input" id="cfg-unraid-key" type="text" placeholder="Settings → Management Access → API Keys" spellcheck="false" />
+        </div>
+
+        <div class="settings-section-label">appearance</div>
+        <div class="settings-row">
+          <label class="settings-label" for="cfg-display-title">title</label>
+          <input class="settings-input" id="cfg-display-title" type="text" placeholder="panel" spellcheck="false" />
+        </div>
+        <div class="settings-hint">Use | as a separator — e.g. &nbsp;<em>my | panel</em></div>
+
+        <div class="settings-section-label">theme</div>
+        <div class="theme-swatches" id="theme-swatches">
+          <button type="button" class="theme-swatch" data-theme="forest">
+            <div class="theme-swatch-block"></div>
+            <span class="theme-swatch-label">forest</span>
+          </button>
+          <button type="button" class="theme-swatch" data-theme="midnight">
+            <div class="theme-swatch-block"></div>
+            <span class="theme-swatch-label">midnight</span>
+          </button>
+          <button type="button" class="theme-swatch" data-theme="ember">
+            <div class="theme-swatch-block"></div>
+            <span class="theme-swatch-label">ember</span>
+          </button>
+          <button type="button" class="theme-swatch" data-theme="slate">
+            <div class="theme-swatch-block"></div>
+            <span class="theme-swatch-label">slate</span>
+          </button>
+          <button type="button" class="theme-swatch" data-theme="crimson">
+            <div class="theme-swatch-block"></div>
+            <span class="theme-swatch-label">crimson</span>
+          </button>
+        </div>
+
+        <div class="settings-section-label">general</div>
+        <div class="settings-row">
+          <label class="settings-label" for="cfg-interval">refresh (sec)</label>
+          <input class="settings-input settings-input--short" id="cfg-interval" type="number" min="5" max="3600" placeholder="30" />
+        </div>
+
+        <div class="settings-footer-row">
+          <span class="settings-status" id="settings-status"></span>
+          <button type="submit" class="settings-save-btn" id="settings-save">save</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
   <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/settings.js"></script>
 </body>
 </html>
