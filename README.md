@@ -96,21 +96,6 @@ docker compose up -d --build
 
 Open **http://YOUR_UNRAID_IP:3000** in your browser.
 
-**Updating after a GitHub push:**
-
-```bash
-cd /mnt/user/appdata/selfhosted-dashboard
-./update.sh
-```
-
-The `update.sh` script pulls the latest changes and only restarts the container if `server.js` changed — static file updates (HTML/CSS/JS) are live immediately thanks to the Docker volume mount.
-
-To force a restart regardless:
-
-```bash
-./update.sh --restart
-```
-
 > **Tip:** UnRAID's Compose Manager plugin (Community Applications) can manage the container via the web UI. Point it at `/mnt/user/appdata/selfhosted-dashboard/docker-compose.yml` for a GUI start/stop/restart experience.
 
 ---
