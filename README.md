@@ -25,7 +25,7 @@ Download the latest release for your platform from the [Releases](../../releases
 |----------|------|
 | Windows  | `.exe` installer |
 | macOS    | `.dmg` |
-| Linux    | `.AppImage` |
+| Linux    | `.AppImage` (requires FUSE2) or `.tar.gz` |
 
 ## First run
 
@@ -40,6 +40,8 @@ Configuration is saved to:
 | macOS    | `~/Library/Application Support/panel/config.json` |
 
 Services you don't use can be left blank — their cards will simply show as offline.
+
+> **Linux note:** The AppImage requires `libfuse2` (`sudo apt install libfuse2` / `sudo pacman -S fuse2`). If you'd prefer not to install it, use the `.tar.gz` release instead — extract it and run `panel` from the extracted folder.
 
 ## Building from source
 
