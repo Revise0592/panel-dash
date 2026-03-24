@@ -3,3 +3,5 @@ node_modules/
 
 # Live config with credentials - copy config.example.js to config.js and fill in your values
 js/config.js
+
+.claude/

@@ -75,6 +75,44 @@ Open **http://localhost:3000** in your browser.
 
 > **Note:** Always open the dashboard via the Node.js server URL, not by opening `index.html` directly. The proxy server is required for CORS and UnRAID TLS handling.
 
+### Deploying on UnRAID
+
+UnRAID's persistent app data lives in `/mnt/user/appdata/`. Clone the repo there so your config and data survive container restarts and UnRAID updates.
+
+**Initial setup (SSH into UnRAID):**
+
+```bash
+cd /mnt/user/appdata
+git clone https://github.com/Revise0592/selfhosted-dash.git selfhosted-dashboard
+cd selfhosted-dashboard
+
+# Create your config (this file is gitignored — you only do this once)
+cp js/config.example.js js/config.js
+nano js/config.js
+
+# Start the container
+docker compose up -d --build
+```
+
+Open **http://YOUR_UNRAID_IP:3000** in your browser.
+
+**Updating after a GitHub push:**
+
+```bash
+cd /mnt/user/appdata/selfhosted-dashboard
+./update.sh
+```
+
+The `update.sh` script pulls the latest changes and only restarts the container if `server.js` changed — static file updates (HTML/CSS/JS) are live immediately thanks to the Docker volume mount.
+
+To force a restart regardless:
+
+```bash
+./update.sh --restart
+```
+
+> **Tip:** UnRAID's Compose Manager plugin (Community Applications) can manage the container via the web UI. Point it at `/mnt/user/appdata/selfhosted-dashboard/docker-compose.yml` for a GUI start/stop/restart experience.
+
 ---
 
 ## Configuration
