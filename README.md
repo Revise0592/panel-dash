@@ -46,7 +46,7 @@ A lightweight, self-hosted monitoring dashboard for your media and download stac
 ### Using Docker (recommended)
 
 ```bash
-git clone https://github.com/your-username/selfhosted-dashboard.git
+git clone https://github.com/Revise0592/selfhosted-dash.git
 cd selfhosted-dashboard
 
 # Copy and fill in your config
@@ -62,7 +62,7 @@ Open **http://localhost:3000** in your browser.
 ### Running locally
 
 ```bash
-git clone https://github.com/your-username/selfhosted-dashboard.git
+git clone https://github.com/Revise0592/selfhosted-dash.git
 cd selfhosted-dashboard
 
 cp js/config.example.js js/config.js
